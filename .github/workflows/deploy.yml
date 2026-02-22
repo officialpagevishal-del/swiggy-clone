@@ -1,3 +1,4 @@
+#steps of the workflow are
 name: Build and Push to ECR
 
 on:
@@ -21,14 +22,14 @@ jobs:
 
     - name: Login to ECR
       run: |
-        aws ecr get-login-password --region ap-south-1 \
-        | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com
+        aws ecr get-login-password --region eu-north-1. \
+        | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com
 
     - name: Build Docker image
       run: docker build -t swiggy-ui .
 
     - name: Tag image
-      run: docker tag swiggy-ui:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/swiggy-ui:latest
+      run: docker tag swiggy-ui:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/swiggy-ui:latest
 
     - name: Push image
-      run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-south-1.amazonaws.com/swiggy-ui:latest
+      run: docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-north-1.amazonaws.com/swiggy-ui:latest
